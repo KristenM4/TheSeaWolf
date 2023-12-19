@@ -6,6 +6,7 @@
     <title>The Sea Wolf</title>
 </head>
 <body>
+    @include('nav')
     {{$slot}}
 </body>
 </html>
