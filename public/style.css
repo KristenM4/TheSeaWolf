@@ -1,6 +1,26 @@
+/* Custom colours */
 :root {
     --sw-blue-900: #0A2647;
     --sw-blue-700: #144272;
     --sw-blue-500: #205295;
     --sw-blue-300: #2C74B3;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    padding: 0px 16px;
+}
+
+/* Top Navigation Menu */
+#main-nav {
+    background-color: var(--sw-blue-700);
+    color: #fff;
+    padding: 12px 0px;
+}
+#main-nav .logo {
+    font-weight: 700;
+    font-size: 28px;
 }
