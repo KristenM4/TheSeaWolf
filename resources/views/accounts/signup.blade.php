@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container">
         <h1>Welcome to the signup page</h1>
-        <form action="signup" method="POST" id="signup-form">
+        <form action="/signup-success" method="POST" id="signup-form">
             @csrf
             <label for="firstname-signup">First Name</label>
             <input name="firstname" id="firstname-signup" type="text" placeholder="Enter your first name" />
