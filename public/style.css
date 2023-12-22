@@ -74,3 +74,38 @@ a:hover {
     gap: 20px;
     font-size: 20px;
 }
+
+/* Signup Form */
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+#signup-form label {
+    margin: 8px 0px 4px 0px;
+}
+#signup-form input {
+    padding: 8px 6px;
+    border-radius: 3px;
+    border-width: 1px;
+}
+@media screen and (min-width: 768px) {
+    #signup-form input {
+        width: 70%;
+    }
+}
+#signup-form button {
+    padding: 8px 25px;
+    margin: 16px 0px;
+    border-radius: 8px;
+    width: fit-content;
+    background-color: var(--sw-blue-500);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+#signup-form button:hover {
+    background-color: var(--sw-blue-700);
+    transition: all;
+    transition-duration: 500ms;
+}
