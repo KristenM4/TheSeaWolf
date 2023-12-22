@@ -1,5 +1,5 @@
 <x-layout>
-    <div>
+    <div class="container">
         <h1>Welcome to the home page</h1>
     </div>
 </x-layout>
