@@ -8,6 +8,18 @@ use App\Models\User;
 
 class AccountsController extends Controller
 {
+    public function login(Request $request) {
+        $loginFormData = $request->validate([
+            'email-login' => 'required',
+            'password-login' => 'required'
+        ]);
+        if(auth()->attempt(['email'=>$loginFormData['email-login'], 'password'=>$loginFormData['password-login']])) {
+            return 'logged in';
+        }
+        else {
+            return 'error';
+        }
+    }
     public function signup() {
         return view('accounts/signup');
     }

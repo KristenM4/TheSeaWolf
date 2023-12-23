@@ -4,11 +4,11 @@
 
         <div class="login-container">
             <h2>Log In</h2>
-            <form action="/" method="POST" id="login-form">
+            <form action="/login/" method="POST" id="login-form">
             @csrf
                 <div class="form-item">
                     <label for="email-login">Email Address</label>
-                    <input value="{{old('email')}}" name="email" id="email-login" type="email" placeholder="Enter your email address" />
+                    <input value="{{old('email')}}" name="email-login" id="email-login" type="email" placeholder="Enter your email address" />
                     @error('email')
                     <p class="form-error">{{$message}}</p>
                     @enderror
@@ -16,7 +16,7 @@
 
                 <div class="form-item">
                     <label for="password-login">Password</label>
-                    <input name="password" id="password-login" type="password" placeholder="Enter a password" />
+                    <input name="password-login" id="password-login" type="password" placeholder="Enter a password" />
                     @error('password')
                     <p class="form-error">{{$message}}</p>
                     @enderror
