@@ -16,5 +16,5 @@ use App\Http\Controllers\AccountsController;
 */
 
 Route::get('/', [HomeController::class, "homepage"]);
-Route::get('/signup', [AccountsController::class, "signup"]);
-Route::post('/signup-success', [AccountsController::class, "signupSuccess"]);
+Route::get('/signup/', [AccountsController::class, "signup"]);
+Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
