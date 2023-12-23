@@ -106,6 +106,10 @@ a:hover {
     flex-direction: column;
     gap: 6px;
 }
+.form-error {
+    color: #dc2626;
+    font-size: 14px;
+}
 #signup-form label {
     margin-top: 10px;
     font-size: 18px;
