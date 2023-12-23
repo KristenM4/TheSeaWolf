@@ -25,7 +25,7 @@
 
             <div class="form-item">
             <label for="password-signup-confirm">Confirm Password</label>
-            <input name="password" id="password-signup-confirm" type="password" placeholder="Confirm password" />
+            <input name="password_confirmation" id="password-signup-confirm" type="password" placeholder="Confirm password" />
             </div>
 
             <button type="submit">Sign Up</button>
