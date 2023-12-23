@@ -5,12 +5,12 @@
             @csrf
             <div class="form-item">
                 <label for="firstname-signup">First Name</label>
-                <input name="firstname" id="firstname-signup" type="text" placeholder="Enter your first name" />
+                <input name="first_name" id="firstname-signup" type="text" placeholder="Enter your first name" />
             </div>
 
             <div class="form-item">
             <label for="lastname-signup">Last Name</label>
-            <input name="lastname" id="lastname-signup" type="text" placeholder="Enter your last name" />
+            <input name="last_name" id="lastname-signup" type="text" placeholder="Enter your last name" />
             </div>
 
             <div class="form-item">
