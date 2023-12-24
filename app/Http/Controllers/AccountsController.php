@@ -45,8 +45,9 @@ class AccountsController extends Controller
         ]);
         $signupFormData['password'] = bcrypt($signupFormData['password']);
 
-        User::create($signupFormData);
+        $newUser = User::create($signupFormData);
+        auth()->login($newUser);
 
-        return view('accounts/signupSuccess');
+        return redirect('/')->with('success', 'Your account has successfully been created.');
     }
 }
