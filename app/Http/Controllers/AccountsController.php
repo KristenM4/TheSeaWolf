@@ -9,13 +9,16 @@ use App\Models\User;
 class AccountsController extends Controller
 {
     public function login(Request $request) {
+        if(auth()->check()) {
+            return view('homepage');
+        }
         $loginFormData = $request->validate([
             'email-login' => 'required',
             'password-login' => 'required'
         ]);
         if(auth()->attempt(['email'=>$loginFormData['email-login'], 'password'=>$loginFormData['password-login']])) {
             $request->session()->regenerate();
-            return 'logged in';
+            return view('homepage');
         }
         else {
             return 'error';
@@ -25,6 +28,9 @@ class AccountsController extends Controller
         return view('accounts/signup');
     }
     public function signupSuccess(Request $request) {
+        if(auth()->check()) {
+            return view('homepage');
+        }
         $signupFormData = $request->validate([
             'first_name' => ['required', 'min:2', 'max:50'],
             'last_name' => ['required', 'min:2', 'max:50'],
