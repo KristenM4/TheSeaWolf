@@ -10,7 +10,7 @@ class AccountsController extends Controller
 {
     public function login(Request $request) {
         if(auth()->check()) {
-            return view('homepage');
+            return redirect('/');
         }
         $loginFormData = $request->validate([
             'email-login' => 'required',
@@ -18,7 +18,7 @@ class AccountsController extends Controller
         ]);
         if(auth()->attempt(['email'=>$loginFormData['email-login'], 'password'=>$loginFormData['password-login']])) {
             $request->session()->regenerate();
-            return view('homepage');
+            return redirect('/');
         }
         else {
             return 'error';
@@ -27,7 +27,7 @@ class AccountsController extends Controller
 
     public function logout() {
         auth()->logout();
-        return view('homepage');
+        return redirect('/');
     }
 
     public function signup() {
@@ -35,7 +35,7 @@ class AccountsController extends Controller
     }
     public function signupSuccess(Request $request) {
         if(auth()->check()) {
-            return view('homepage');
+            return redirect('/');
         }
         $signupFormData = $request->validate([
             'first_name' => ['required', 'min:2', 'max:50'],
