@@ -21,7 +21,7 @@ class AccountsController extends Controller
             return redirect('/')->with('success', 'You have successfully logged in.');
         }
         else {
-            return 'error';
+            return redirect('/')->with('error', 'Incorrect email or password.');
         }
     }
 

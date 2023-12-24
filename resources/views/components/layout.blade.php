@@ -12,6 +12,10 @@
     <div class="success-message">
         <p>{{session('success')}}</p>
     </div>
+    @elseif(session()->has('error'))
+    <div class="error-message">
+        <p>{{session('error')}}</p>
+    </div>
     @endif
     {{$slot}}
 </body>
