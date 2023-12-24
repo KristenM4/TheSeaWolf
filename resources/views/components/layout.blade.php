@@ -9,7 +9,7 @@
 <body>
     @include('nav')
     @if(session()->has('success'))
-    <div>
+    <div class="success-message">
         <p>{{session('success')}}</p>
     </div>
     @endif
