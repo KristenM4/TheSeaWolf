@@ -24,6 +24,12 @@ class AccountsController extends Controller
             return 'error';
         }
     }
+
+    public function logout() {
+        auth()->logout();
+        return view('homepage');
+    }
+
     public function signup() {
         return view('accounts/signup');
     }
