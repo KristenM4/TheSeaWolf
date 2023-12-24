@@ -8,6 +8,11 @@
 </head>
 <body>
     @include('nav')
+    @if(session()->has('success'))
+    <div>
+        <p>{{session('success')}}</p>
+    </div>
+    @endif
     {{$slot}}
 </body>
 </html>

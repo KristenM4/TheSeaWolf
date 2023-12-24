@@ -18,7 +18,7 @@ class AccountsController extends Controller
         ]);
         if(auth()->attempt(['email'=>$loginFormData['email-login'], 'password'=>$loginFormData['password-login']])) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect('/')->with('success', 'You have successfully logged in.');
         }
         else {
             return 'error';
@@ -27,7 +27,7 @@ class AccountsController extends Controller
 
     public function logout() {
         auth()->logout();
-        return redirect('/');
+        return redirect('/')->with('success', 'You are now logged out.');
     }
 
     public function signup() {
