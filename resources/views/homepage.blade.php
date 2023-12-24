@@ -2,6 +2,9 @@
     <div class="container">
         <h1>Welcome to the home page</h1>
 
+        @auth
+        <h2>You are logged in</h2>
+        @else
         <div class="login-container">
             <h2>Log In</h2>
             <form action="/login/" method="POST" id="login-form">
@@ -25,5 +28,6 @@
             </form>
             <p>Or <a href="/signup/">Sign Up</a></p>
         </div>
+        @endauth
     </div>
 </x-layout>

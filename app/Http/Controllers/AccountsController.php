@@ -14,6 +14,7 @@ class AccountsController extends Controller
             'password-login' => 'required'
         ]);
         if(auth()->attempt(['email'=>$loginFormData['email-login'], 'password'=>$loginFormData['password-login']])) {
+            $request->session()->regenerate();
             return 'logged in';
         }
         else {
