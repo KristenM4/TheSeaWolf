@@ -19,3 +19,4 @@ Route::get('/', [HomeController::class, "homepage"]);
 Route::post('/login/', [AccountsController::class, "login"]);
 Route::get('/logout/', [AccountsController::class, "logout"]);
 Route::get('/signup/', [AccountsController::class, "signup"]);
+Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);

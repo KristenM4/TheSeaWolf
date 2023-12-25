@@ -71,6 +71,14 @@ a:hover {
 #main-nav .logo {
     font-weight: 700;
     font-size: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+    #main-nav .logo {
+        width: 100%;
+    }
 }
 #main-nav nav {
     display: flex;
@@ -78,6 +86,40 @@ a:hover {
     justify-content: space-between;
     gap: 20px;
     font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+    #main-nav nav {
+        display:none;
+    }
+}
+#nav-mobile {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#nav-mobile button {
+    cursor: pointer;
+    align-items: center;
+    padding: 3px 9px 3px 9px;
+    border-radius: 3px;
+    background-color: transparent;
+    border:none;
+    outline:none;
+}
+#nav-mobile button div {
+    background-color: #fff;
+    border-radius: 3px;
+    width: 40px;
+    height: 8px;
+}
+#nav-mobile button div:nth-of-type(2) {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+@media screen and (min-width: 768px) {
+    #nav-mobile {
+        display:none;
+    }
 }
 .success-message, .error-message {
     margin-left: auto;
