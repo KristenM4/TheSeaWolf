@@ -19,4 +19,5 @@
     @endif
     {{$slot}}
 </body>
+    <script src="{{ asset('main.js') }}"></script>
 </html>
