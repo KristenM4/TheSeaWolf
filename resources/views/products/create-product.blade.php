@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container">
         <h1>Create a New Product</h1>
-        <form action="" method="POST">
+        <form action="/create-product/" method="POST">
             @csrf
             <div class="form-item">
                 <label for="name-create">Product Name</label>

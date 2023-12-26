@@ -10,4 +10,7 @@ class ProductController extends Controller
     function createProductForm() {
         return view('products/create-product');
     }
+    function createProduct() {
+        return 'success';
+    }
 }
