@@ -4,6 +4,9 @@
 
         @auth
         <h2>You are logged in, {{auth()->user()->email}}</h2>
+            @if(auth()->user()->staff)
+            <a href="/create-product/">Create New Product</a>
+            @endif
         @else
         <div class="login-container">
             <h2>Log In</h2>

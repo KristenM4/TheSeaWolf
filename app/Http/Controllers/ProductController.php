@@ -8,6 +8,6 @@ class ProductController extends Controller
 {
     //
     function createProductForm() {
-        return 'create product here';
+        return view('products/create-product');
     }
 }
