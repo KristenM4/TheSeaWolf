@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,14 @@ use App\Http\Controllers\AccountsController;
 |
 */
 
+// Homepage Routes
 Route::get('/', [HomeController::class, "homepage"]);
+
+// User Accounts
 Route::post('/login/', [AccountsController::class, "login"]);
 Route::get('/logout/', [AccountsController::class, "logout"]);
 Route::get('/signup/', [AccountsController::class, "signup"]);
 Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
+
+// Products
+Route::get('/create-product/', [ProductController::class, "createProductForm"]);
