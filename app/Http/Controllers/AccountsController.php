@@ -44,6 +44,7 @@ class AccountsController extends Controller
             'password' => ['required', 'min:6', 'max:30', 'confirmed']
         ]);
         $signupFormData['password'] = bcrypt($signupFormData['password']);
+        $signupFormData['staff'] = false;
 
         $newUser = User::create($signupFormData);
         auth()->login($newUser);
