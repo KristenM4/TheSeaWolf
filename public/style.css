@@ -68,6 +68,12 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
 }
+@media screen and (max-width: 768px) {
+    #main-nav .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
 #main-nav .logo {
     font-weight: 700;
     font-size: 28px;
@@ -89,6 +95,16 @@ a:hover {
     justify-content: space-between;
     gap: 20px;
     font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+    #main-nav nav {
+        flex-direction: column;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+}
+#main-nav nav a {
+    width: fit-content;
 }
 #nav-mobile {
     margin-top: auto;
