@@ -28,3 +28,4 @@ Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
 // Products
 Route::get('/create-product/', [ProductController::class, "createProductForm"]);
 Route::post('/create-product/', [ProductController::class, "createProduct"]);
+Route::get('/product/{product}/', [ProductController::class, "productPage"]);

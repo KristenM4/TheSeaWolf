@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    //
+    function productPage(Product $product) {
+
+        return view('products/productpage', ['product' => $product]);
+    }
+
     function createProductForm() {
         return view('products/create-product');
     }
