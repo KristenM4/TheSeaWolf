@@ -18,6 +18,7 @@
     </div>
     @endif
     {{$slot}}
+    @include('footer')
 </body>
     <script src="{{ asset('main.js') }}"></script>
 </html>
