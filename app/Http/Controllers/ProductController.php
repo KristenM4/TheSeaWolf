@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     function productPage(Product $product) {
-
+        $product['description'] = Str::markdown($product->description);
         return view('products/productpage', ['product' => $product]);
     }
 
