@@ -7,17 +7,19 @@
     <title>The Sea Wolf</title>
 </head>
 <body>
-    @include('nav')
-    @if(session()->has('success'))
-    <div class="success-message">
-        <p>{{session('success')}}</p>
+    <div class="page-content">
+        @include('nav')
+        @if(session()->has('success'))
+        <div class="success-message">
+            <p>{{session('success')}}</p>
+        </div>
+        @elseif(session()->has('error'))
+        <div class="error-message">
+            <p>{{session('error')}}</p>
+        </div>
+        @endif
+        {{$slot}}
     </div>
-    @elseif(session()->has('error'))
-    <div class="error-message">
-        <p>{{session('error')}}</p>
-    </div>
-    @endif
-    {{$slot}}
     @include('footer')
 </body>
     <script src="{{ asset('main.js') }}"></script>

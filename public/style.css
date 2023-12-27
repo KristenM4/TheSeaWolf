@@ -19,6 +19,12 @@ h1 {
     text-align: center;
 }
 
+.page-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 87.2dvh;
+}
+
 /* Container */
 .container {
     padding: 0px 16px;
@@ -156,7 +162,7 @@ a:hover {
     color: #fff;
     padding-top: 24px;
     padding-bottom: 24px;
-    margin-top: 48px;
+    margin-top: 24px;
 }
 
 /* Forms */
