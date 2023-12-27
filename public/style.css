@@ -241,13 +241,20 @@ form button[type=submit]:hover {
 /* Single Product Page */
 .single-product-page {
     display: grid;
+    gap: 28px;
+    padding-top: 64px;
+    padding-bottom: 40px;
 }
 @media screen and (min-width: 768px) {
     .single-product-page {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
     }
 }
 .single-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     line-height: 1.6rem;
     letter-spacing: 0.025em;
     color: var(--sw-blue-900);
@@ -256,4 +263,14 @@ form button[type=submit]:hover {
 }
 .single-product-info h1 {
     color: var(--sw-blue-700);
+    line-height: 2.5rem;
+}
+@media screen and (min-width: 768px) {
+    .single-product-info h1 {
+        text-align: start;
+    }
+}
+.single-product-image {
+    margin-left: auto;
+    margin-right: auto;
 }
