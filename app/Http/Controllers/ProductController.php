@@ -23,8 +23,8 @@ class ProductController extends Controller
         $createProductFormData['name'] = strip_tags($createProductFormData['name']);
         $createProductFormData['description'] = strip_tags($createProductFormData['description']);
 
-        Product::create($createProductFormData);
+        $newProduct = Product::create($createProductFormData);
 
-        return redirect('/')->with('success', 'New product successfully created.');
+        return redirect("/product/{$newProduct->id}")->with('success', 'New product successfully created.');
     }
 }
