@@ -237,3 +237,23 @@ form button[type=submit]:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Single Product Page */
+.single-product-page {
+    display: grid;
+}
+@media screen and (min-width: 768px) {
+    .single-product-page {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+.single-product-info {
+    line-height: 1.6rem;
+    letter-spacing: 0.025em;
+    color: var(--sw-blue-900);
+    padding-top: 12px;
+    padding-bottom: 20px;
+}
+.single-product-info h1 {
+    color: var(--sw-blue-700);
+}
