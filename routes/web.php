@@ -17,7 +17,7 @@ use App\Http\Controllers\ProductController;
 */
 
 // Homepage Routes
-Route::get('/', [HomeController::class, "homepage"]);
+Route::get('/', [HomeController::class, "homepage"])->name('login');
 
 // User Accounts
 Route::post('/login/', [AccountsController::class, "login"]);
@@ -26,6 +26,6 @@ Route::get('/signup/', [AccountsController::class, "signup"]);
 Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
 
 // Products
-Route::get('/create-product/', [ProductController::class, "createProductForm"]);
-Route::post('/create-product/', [ProductController::class, "createProduct"]);
+Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('auth');
+Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('auth');
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
