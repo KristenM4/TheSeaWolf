@@ -14,7 +14,7 @@
             <a href="/">Home</a>
             <a href="">About</a>
             @auth
-            <a href="">My Profile</a>
+            <a href="/user-profile/{{auth()->user()->id}}/">My Profile</a>
             <a href="/logout">Sign out</a>
             @else
             <a href="/signup/">Sign Up</a>
