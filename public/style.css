@@ -22,7 +22,10 @@ h1 {
 .page-content {
     display: flex;
     flex-direction: column;
-    min-height: 87.2dvh;
+    min-height: 100dvh;
+}
+.page-content .page-content-main {
+    flex: 1;
 }
 
 /* Container */
