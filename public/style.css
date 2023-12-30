@@ -95,9 +95,6 @@ a:hover {
         width: 100%;
     }
 }
-.hidden {
-    display: none !important;
-}
 #main-nav nav {
     display: flex;
     flex-direction: row;
@@ -106,6 +103,9 @@ a:hover {
     font-size: 20px;
 }
 @media screen and (max-width: 768px) {
+    #main-nav nav.hidden {
+            display: none;
+    }
     #main-nav nav {
         flex-direction: column;
         padding-bottom: 10px;

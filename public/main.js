@@ -5,21 +5,5 @@ if (document.querySelector(".nav-links")) {
         links.classList.toggle("hidden")
     }
 
-    function getBrowserWidth() {
-        const width = window.innerWidth;
-        if (width > 768) {
-            if (links.classList.contains('hidden')) {
-                links.classList.remove('hidden')
-            }
-        }
-        if (width < 768) {
-            if (!links.classList.contains('hidden')) {
-                links.classList.add('hidden')
-            }
-        }
-    }
-
-    window.onload = getBrowserWidth
-    window.onresize = getBrowserWidth
     toggler.addEventListener("click", toggleLinks)
 }

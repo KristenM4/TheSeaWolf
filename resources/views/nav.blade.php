@@ -10,7 +10,7 @@
                 </button>
             </div>
         </div>
-        <nav class="nav-links">
+        <nav class="nav-links hidden">
             <a href="/">Home</a>
             <a href="">About</a>
             @auth
