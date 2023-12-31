@@ -35,9 +35,9 @@
         <h2 class="home-products-title">All Products</h2>
         <div class="home-products">
             @foreach ($products as $product)
-            <div>
-                <a href="/product/{{$product->id}}">{{$product->name}}</a>
-            </div>
+            <a href="/product/{{$product->id}}"><div class="home-product-card">
+                {{$product->name}}
+            </div></a>
             @endforeach
         </div>
     </div>
