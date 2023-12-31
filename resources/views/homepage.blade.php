@@ -32,7 +32,7 @@
             <p>Or <a href="/signup/">Sign Up</a></p>
         </div>
         @endauth
-        <h2>All Products</h2>
+        <h2 class="home-products-title">All Products</h2>
         <div class="home-products">
             @foreach ($products as $product)
             <div>
