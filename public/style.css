@@ -4,6 +4,7 @@
     --sw-blue-700: #144272;
     --sw-blue-500: #205295;
     --sw-blue-300: #2C74B3;
+    --sw-blue-100: #e3f0fc;
 }
 /* Custom fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
@@ -248,13 +249,13 @@ form button[type=submit]:hover {
     }
 }
 .home-products > div {
-    border: 1px solid var(--sw-blue-300);
+    border: 1px solid var(--sw-blue-100);
     border-radius: 3px;
     text-align: center;
     padding: 16px 8px;
 }
 .home-products > div:hover {
-    background-color: #f5f5f5;
+    background-color: var(--sw-blue-100);
     cursor: pointer;
 }
 .home-products > div a:hover{
