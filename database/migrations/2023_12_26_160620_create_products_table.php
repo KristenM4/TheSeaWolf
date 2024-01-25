@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->decimal('price', $precision = 8, $scale = 2)->nullable();
+            $table->decimal('discount', $precision = 8, $scale = 2)->nullable();
             $table->timestamps();
         });
     }
