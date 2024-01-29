@@ -20,9 +20,14 @@ class ProductController extends Controller
         $createProductFormData = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
             'description' => ['required', 'min:2', 'max:500'],
+            'price' => ['required'],
+            'discount' => []
         ]);
         $createProductFormData['name'] = strip_tags($createProductFormData['name']);
         $createProductFormData['description'] = strip_tags($createProductFormData['description']);
+        $createProductFormData['slug'] = Str::slug($createProductFormData['name']);
+        $createProductFormData['price'] = strip_tags($createProductFormData['price']);
+        $createProductFormData['discount'] = $createProductFormData['discount'] == null ? 0.00 : strip_tags($createProductFormData['discount']);
 
         $newProduct = Product::create($createProductFormData);
 

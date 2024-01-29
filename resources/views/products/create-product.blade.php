@@ -19,6 +19,22 @@
                 @enderror
             </div>
 
+            <div class="form-item">
+                <label for="price-create">Price in GBP</label>
+                <input step=".01" required value="{{old('price')}}" name="price" id="price-create" type="number" placeholder="Enter price" />
+                @error('price')
+                <p class="form-error">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-item">
+                <label for="discount-create">Discount Percentage (0.00 by default)</label>
+                <input step=".01" value="{{old('discount')}}" name="discount" id="discount-create" type="number" placeholder="Enter discount percentage" />
+                @error('discount')
+                <p class="form-error">{{$message}}</p>
+                @enderror
+            </div>
+
             <button type="submit">Create Product</button>
         </form>
     </div>
