@@ -233,6 +233,20 @@ form button[type=submit]:hover {
 }
 
 /* Homepage */
+.homepage-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    color: var(--sw-blue-900);
+    background-color: var(--sw-blue-100);
+    padding: 108px 0px;
+    @media screen and (min-width: 768px) {
+        padding: 170px 0px;
+    }
+}
 .home-products-title {
     text-align: center;
     font-size: 32px;

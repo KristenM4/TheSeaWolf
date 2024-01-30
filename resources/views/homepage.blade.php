@@ -1,7 +1,13 @@
 <x-layout>
-    <div class="container">
-        <h1>Welcome to the home page</h1>
 
+        <div class="homepage-hero">
+            <div class="container">
+                <h1>The Sea Wolf</h1>
+                <p>Surf and Diving Shop</p>
+            </div>
+        </div>
+
+        <div class="container">
         @auth
         <h2>You are logged in, {{auth()->user()->email}}</h2>
             @if(auth()->user()->staff)
