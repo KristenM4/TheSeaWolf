@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container">
         <h1>Create a New Product</h1>
-        <form action="/create-product/" method="POST">
+        <form action="/create-product/" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-item">
                 <label for="name-create">Product Name</label>
@@ -21,7 +21,7 @@
 
             <div class="form-item">
                 <label for="price-create">Price in GBP</label>
-                <input step=".01" required value="{{old('price')}}" name="price" id="price-create" type="number" placeholder="Enter price" />
+                <input required step=".01" value="{{old('price')}}" name="price" id="price-create" type="number" placeholder="Enter price" />
                 @error('price')
                 <p class="form-error">{{$message}}</p>
                 @enderror
@@ -31,6 +31,14 @@
                 <label for="discount-create">Discount Percentage (0.00 by default)</label>
                 <input step=".01" value="{{old('discount')}}" name="discount" id="discount-create" type="number" placeholder="Enter discount percentage" />
                 @error('discount')
+                <p class="form-error">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-item">
+                <label for="image-create">Product Image</label>
+                <input required value="{{old('image')}}" name="image" id="image-create" type="file" accept="image/*" />
+                @error('image')
                 <p class="form-error">{{$message}}</p>
                 @enderror
             </div>

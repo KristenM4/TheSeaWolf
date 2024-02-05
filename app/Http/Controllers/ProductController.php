@@ -20,9 +20,10 @@ class ProductController extends Controller
         $createProductFormData = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
             'description' => ['required', 'min:2', 'max:500'],
-            'price' => ['required'],
+            'price' => ['required', 'image', 'max:8000'],
             'discount' => []
         ]);
+        $request->file('image')->store('public/product_images');
         $createProductFormData['name'] = strip_tags($createProductFormData['name']);
         $createProductFormData['description'] = strip_tags($createProductFormData['description']);
         $createProductFormData['slug'] = Str::slug($createProductFormData['name']);
