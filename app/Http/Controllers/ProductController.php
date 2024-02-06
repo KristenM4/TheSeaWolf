@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -20,15 +22,18 @@ class ProductController extends Controller
         $createProductFormData = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
             'description' => ['required', 'min:2', 'max:500'],
-            'price' => ['required', 'image', 'max:8000'],
-            'discount' => []
+            'price' => ['required'],
+            'discount' => [],
         ]);
-        $request->file('image')->store('public/product_images');
         $createProductFormData['name'] = strip_tags($createProductFormData['name']);
         $createProductFormData['description'] = strip_tags($createProductFormData['description']);
-        $createProductFormData['slug'] = Str::slug($createProductFormData['name']);
+        $slugName = Str::slug($createProductFormData['name']) . '-' . substr(bin2hex(random_bytes(4)), 0, 8);
+        $createProductFormData['slug'] = $slugName;
         $createProductFormData['price'] = strip_tags($createProductFormData['price']);
         $createProductFormData['discount'] = $createProductFormData['discount'] == null ? 0.00 : strip_tags($createProductFormData['discount']);
+
+        $productImg = Image::make($request->file('image'))->fit(500, 700)->encode('jpg');
+        Storage::put('public/product-images/' . $slugName . '.jpg', $productImg);
 
         $newProduct = Product::create($createProductFormData);
 
