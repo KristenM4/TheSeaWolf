@@ -40,6 +40,7 @@ class ProductController extends Controller
             ->encode('jpg');
         $imageName = $slugName . '-image.jpg';
         Storage::put('public/product-images/' . $imageName, $productImg);
+        $createProductFormData['image'] = $imageName;
 
         $newProduct = Product::create($createProductFormData);
 

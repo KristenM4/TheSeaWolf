@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('image')->unique();
             $table->longText('description');
             $table->decimal('price', $precision = 8, $scale = 2)->nullable();
             $table->decimal('discount', $precision = 8, $scale = 2)->nullable();
