@@ -32,8 +32,14 @@ class ProductController extends Controller
         $createProductFormData['price'] = strip_tags($createProductFormData['price']);
         $createProductFormData['discount'] = $createProductFormData['discount'] == null ? 0.00 : strip_tags($createProductFormData['discount']);
 
-        $productImg = Image::make($request->file('image'))->fit(500, 700)->encode('jpg');
-        Storage::put('public/product-images/' . $slugName . '.jpg', $productImg);
+        $productImg = Image::make($request->file('image'))
+            ->resize(500, 800, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+            })
+            ->encode('jpg');
+        $imageName = $slugName . '-image.jpg';
+        Storage::put('public/product-images/' . $imageName, $productImg);
 
         $newProduct = Product::create($createProductFormData);
 
