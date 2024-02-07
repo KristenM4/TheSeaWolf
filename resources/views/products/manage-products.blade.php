@@ -5,13 +5,13 @@
         <h3>All Products</h3>
         <table class="manage-products-table">
             <tr>
-                <th>Name</th>
+                <th>Product</th>
                 <th>Price</th>
                 <th>Discount</th>
             </tr>
             @foreach ($products as $product)
             <tr>
-                <td>{{$product->name}}</td>
+                <td><img src="{{$product->image_path}}" alt="{{$product->name}}">{{$product->name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->discount}}</td>
             </tr>
