@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -15,7 +15,14 @@ class Product extends Model
         'slug',
         'description',
         'price',
-        'discount',
-        'image'
+        'discount'
     ];
+
+    protected function image(): Attribute {
+        return Attribute::make(get: function($value) {
+            $filePath = '/storage/product-images/';
+            $fileName = $value ? $value : 'no-image.jpg';
+            return $filePath . $fileName;
+        });
+    }
 }
