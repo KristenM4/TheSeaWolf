@@ -30,3 +30,4 @@ Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('auth');
 Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('auth');
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
+Route::get('/manage-products/', [ProductController::class, "manageProducts"]);

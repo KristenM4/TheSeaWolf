@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -45,5 +46,10 @@ class ProductController extends Controller
         $newProduct = Product::create($createProductFormData);
 
         return redirect("/product/{$newProduct->id}")->with('success', 'New product successfully created.');
+    }
+
+    function manageProducts() {
+        $products = DB::table('products')->get();
+        return view('products/manage-products', ['products' => $products]);
     }
 }

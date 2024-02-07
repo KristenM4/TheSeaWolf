@@ -351,3 +351,19 @@ form button[type=submit]:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Manage Products Page */
+.manage-product-page h3 {
+    text-align: center;
+    padding-top: 20px;
+}
+.manage-products-table {
+    width: 100%;
+}
+.manage-products-table th {
+    background-color: var(--sw-blue-100);
+}
+.manage-products-table th, td {
+    text-align: start;
+    padding: 10px 8px;
+}
