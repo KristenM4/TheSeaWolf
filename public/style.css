@@ -13,6 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    color: var(--sw-blue-900);
 }
 h1 {
     margin-left: auto;
