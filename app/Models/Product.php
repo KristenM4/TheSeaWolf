@@ -15,13 +15,14 @@ class Product extends Model
         'slug',
         'description',
         'price',
-        'discount'
+        'discount',
+        'image'
     ];
 
-    protected function image(): Attribute {
-        return Attribute::make(get: function($value) {
+    protected function imagePath(): Attribute {
+        return Attribute::make(get: function() {
             $filePath = '/storage/product-images/';
-            $fileName = $value ? $value : 'no-image.jpg';
+            $fileName = $this->image ? $this->image : 'no-image.jpg';
             return $filePath . $fileName;
         });
     }

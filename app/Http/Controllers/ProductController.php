@@ -49,7 +49,7 @@ class ProductController extends Controller
     }
 
     function manageProducts() {
-        $products = DB::table('products')->get();
+        $products = Product::all();
         return view('products/manage-products', ['products' => $products]);
     }
 }
