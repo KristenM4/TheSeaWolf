@@ -84,4 +84,32 @@ class ProductController extends Controller
 
         return redirect("/manage-products/")->with('success', 'Product image successfully changed.');
     }
+
+    function editProductDetails(Product $product) {
+        return view('products/edit-product-details', ['product' => $product]);
+    }
+
+    function saveNewDetails(Request $request) {
+        $editProductFormData = $request->validate([
+            'name' => ['required', 'min:2', 'max:100'],
+            'description' => ['required', 'min:2', 'max:500'],
+            'price' => ['required'],
+            'discount' => [],
+            'id' => [],
+        ]);
+        $editProductFormData['name'] = strip_tags($editProductFormData['name']);
+        $editProductFormData['description'] = strip_tags($editProductFormData['description']);
+        $editProductFormData['price'] = strip_tags($editProductFormData['price']);
+        $editProductFormData['discount'] = $editProductFormData['discount'] == null ? 0.00 : strip_tags($editProductFormData['discount']);
+
+        $product = Product::find($editProductFormData['id']);
+
+        $product->name = $editProductFormData['name'];
+        $product->description = $editProductFormData['description'];
+        $product->price = $editProductFormData['price'];
+        $product->discount = $editProductFormData['discount'];
+        $product->save();
+
+        return redirect("/manage-products/")->with('success', 'Product details successfully changed.');
+    }
 }

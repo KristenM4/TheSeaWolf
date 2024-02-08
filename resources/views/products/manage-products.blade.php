@@ -16,6 +16,7 @@
                     <div>
                         {{$product->name}}
                         <a href="/change-product-image/{{$product->id}}/" title="Change image">Change image</a>
+                        <a href="/edit-product/{{$product->id}}/" title="Edit details">Edit details</a>
                     </div>
                 </td>
                 <td>{{$product->price}}</td>
