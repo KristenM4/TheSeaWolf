@@ -52,4 +52,36 @@ class ProductController extends Controller
         $products = Product::all();
         return view('products/manage-products', ['products' => $products]);
     }
+
+    function ChangeProductImage(Product $product) {
+        $product['description'] = Str::markdown($product->description);
+        return view('products/change-product-image', ['product' => $product]);
+    }
+
+    function saveNewProductImage(Request $request) {
+        $changeImageFormData = $request->validate([
+            'id' => [],
+        ]);
+
+        $product = Product::find($changeImageFormData['id']);
+
+        $productImg = Image::make($request->file('image'))
+            ->resize(500, 800, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+            })
+            ->encode('jpg');
+        $newImageName = $product['slug'] . '-image.jpg';
+
+        $oldImage = $product->image;
+        if (!empty($oldImage) && $oldImage != 'no-image.jpg') {
+            Storage::delete('public/product-images/' . $oldImage);
+        }
+
+        Storage::put('public/product-images/' . $newImageName, $productImg);
+        $product->image = $newImageName;
+        $product->save();
+
+        return redirect("/manage-products/")->with('success', 'Product image successfully changed.');
+    }
 }

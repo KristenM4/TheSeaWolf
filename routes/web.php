@@ -31,3 +31,5 @@ Route::get('/create-product/', [ProductController::class, "createProductForm"])-
 Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('auth');
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
 Route::get('/manage-products/', [ProductController::class, "manageProducts"]);
+Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"]);
+Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"]);

@@ -11,7 +11,13 @@
             </tr>
             @foreach ($products as $product)
             <tr>
-                <td><img src="{{$product->image_path}}" alt="{{$product->name}}">{{$product->name}}</td>
+                <td>
+                    <img src="{{$product->image_path}}" alt="{{$product->name}}">
+                    <div>
+                        {{$product->name}}
+                        <a href="/change-product-image/{{$product->id}}/" title="Change image">Change image</a>
+                    </div>
+                </td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->discount}}</td>
             </tr>
