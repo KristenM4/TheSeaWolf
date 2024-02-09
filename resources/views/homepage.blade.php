@@ -10,7 +10,9 @@
         <div class="container">
         @auth
         <h2>You are logged in, {{auth()->user()->email}}</h2>
+            @if(auth()->user()->staff)
             <a href="/manage-products/">Manage Products</a>
+            @endif
         @else
         <div class="login-container">
             <h2>Log In</h2>

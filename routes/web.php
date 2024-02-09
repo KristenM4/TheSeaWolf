@@ -30,11 +30,11 @@ Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->m
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
 
 // Products CRUD (admins only)
-Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isLoggedIn');
-Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isLoggedIn');
-Route::get('/manage-products/', [ProductController::class, "manageProducts"])->middleware('isLoggedIn');
-Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('isLoggedIn');
-Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('isLoggedIn');
-Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('isLoggedIn');
-Route::post('/edit-product/', [ProductController::class, "saveNewDetails"])->middleware('isLoggedIn');
-Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('isLoggedIn');
+Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
+Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isStaff');
+Route::get('/manage-products/', [ProductController::class, "manageProducts"])->middleware('isStaff');
+Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('isStaff');
+Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('isStaff');
+Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('isStaff');
+Route::post('/edit-product/', [ProductController::class, "saveNewDetails"])->middleware('isStaff');
+Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('isStaff');
