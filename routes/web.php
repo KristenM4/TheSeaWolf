@@ -20,19 +20,21 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class, "homepage"])->name('login');
 
 // User Accounts
-Route::post('/login/', [AccountsController::class, "login"]);
-Route::get('/logout/', [AccountsController::class, "logout"]);
-Route::get('/user-profile/{user}/', [AccountsController::class, "userProfile"])->middleware('auth');
-Route::get('/signup/', [AccountsController::class, "signup"]);
-Route::post('/signup-success/', [AccountsController::class, "signupSuccess"]);
+Route::post('/login/', [AccountsController::class, "login"])->middleware('guest');
+Route::get('/logout/', [AccountsController::class, "logout"])->middleware('isLoggedIn');
+Route::get('/user-profile/{user}/', [AccountsController::class, "userProfile"])->middleware('isLoggedIn');
+Route::get('/signup/', [AccountsController::class, "signup"])->middleware('guest');
+Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->middleware('guest');
 
 // Products
-Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('auth');
-Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('auth');
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
-Route::get('/manage-products/', [ProductController::class, "manageProducts"]);
-Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"]);
-Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"]);
-Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"]);
-Route::post('/edit-product/', [ProductController::class, "saveNewDetails"]);
-Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"]);
+
+// Products CRUD (admins only)
+Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isLoggedIn');
+Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isLoggedIn');
+Route::get('/manage-products/', [ProductController::class, "manageProducts"])->middleware('isLoggedIn');
+Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('isLoggedIn');
+Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('isLoggedIn');
+Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('isLoggedIn');
+Route::post('/edit-product/', [ProductController::class, "saveNewDetails"])->middleware('isLoggedIn');
+Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('isLoggedIn');
