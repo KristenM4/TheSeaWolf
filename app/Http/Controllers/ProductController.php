@@ -112,4 +112,9 @@ class ProductController extends Controller
 
         return redirect("/manage-products/")->with('success', 'Product details successfully changed.');
     }
+
+    function deleteProduct(Product $product) {
+        $product->delete();
+        return redirect("/manage-products/")->with('success', 'Product successfully deleted.');
+    }
 }

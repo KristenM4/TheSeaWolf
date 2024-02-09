@@ -35,3 +35,4 @@ Route::get('/change-product-image/{product}/', [ProductController::class, "chang
 Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"]);
 Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"]);
 Route::post('/edit-product/', [ProductController::class, "saveNewDetails"]);
+Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"]);

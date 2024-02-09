@@ -394,6 +394,50 @@ form button[type=submit]:hover {
         display: none;
     }
 }
+.delete-product {
+    background-color: transparent;
+    padding: 0;
+    color: crimson;
+    cursor: pointer;
+    border: none;
+    width: fit-content;
+    position: relative;
+}
+.delete-section {
+    display: none;
+    position: absolute;
+    top: 15;
+    background-color: var(--sw-blue-100);
+    padding: 10px;
+    width: 170px;
+    text-align: start;
+    border: solid 1px var(--sw-blue-300);
+    border-radius: 3px;
+    cursor: auto;
+}
+.delete-section p {
+    font-size: 11px;
+    margin-top: 0px;
+    color: var(--sw-blue-900);
+}
+.delete-section a {
+    background-color: #dc2626;
+    color: white !important;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.delete-section a:hover {
+    background-color: brown;
+    text-decoration: none;
+    transition-duration: 150ms;
+}
+.delete-product:active .delete-section, .delete-product:focus .delete-section {
+        display: block;
+}
+.delete-section:hover {
+    display: block;
+}
 
 /* Change Product Image Page */
 .change-product-image-page {

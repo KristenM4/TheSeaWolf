@@ -17,6 +17,12 @@
                         {{$product->name}}
                         <a href="/change-product-image/{{$product->id}}/" title="Change image">Change image</a>
                         <a href="/edit-product/{{$product->id}}/" title="Edit details">Edit details</a>
+                        <button class="delete-product" title="Delete product">Delete
+                        <div class="delete-section">
+                            <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+                            <a href="/delete-product/{{$product->id}}/">Delete</a>
+                        </div>
+                        </button>
                     </div>
                 </td>
                 <td>{{$product->price}}</td>
