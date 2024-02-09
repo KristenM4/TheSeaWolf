@@ -22,7 +22,7 @@ Route::get('/', [HomeController::class, "homepage"])->name('login');
 // User Accounts
 Route::post('/login/', [AccountsController::class, "login"])->middleware('guest');
 Route::get('/logout/', [AccountsController::class, "logout"])->middleware('isLoggedIn');
-Route::get('/user-profile/{user}/', [AccountsController::class, "userProfile"])->middleware('isLoggedIn');
+Route::get('/user-profile/', [AccountsController::class, "userProfile"])->middleware('isLoggedIn');
 Route::get('/signup/', [AccountsController::class, "signup"])->middleware('guest');
 Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->middleware('guest');
 

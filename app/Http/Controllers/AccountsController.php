@@ -8,8 +8,8 @@ use App\Models\User;
 
 class AccountsController extends Controller
 {
-    public function userProfile(User $user) {
-        return view('accounts/user-profile', ['user' => $user]);
+    public function userProfile() {
+        return view('accounts/user-profile');
     }
 
     public function login(Request $request) {
