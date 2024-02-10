@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -82,14 +81,14 @@ class ProductController extends Controller
         $product->image = $newImageName;
         $product->save();
 
-        return redirect("/manage-products/")->with('success', 'Product image successfully changed.');
+        return back()->with('success', 'Product image successfully changed.');
     }
 
     function editProductDetails(Product $product) {
         return view('products/edit-product-details', ['product' => $product]);
     }
 
-    function saveNewDetails(Request $request) {
+    function saveNewDetails(Product $product, Request $request) {
         $editProductFormData = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
             'description' => ['required', 'min:2', 'max:500'],
@@ -110,7 +109,7 @@ class ProductController extends Controller
         $product->discount = $editProductFormData['discount'];
         $product->save();
 
-        return redirect("/manage-products/")->with('success', 'Product details successfully changed.');
+        return back()->with('success', 'Product details successfully changed.');
     }
 
     function deleteProduct(Product $product) {

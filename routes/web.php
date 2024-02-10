@@ -31,10 +31,10 @@ Route::get('/product/{product}/', [ProductController::class, "productPage"]);
 
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
-Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isStaff');
+Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('can:create,product');
 Route::get('/manage-products/', [ProductController::class, "manageProducts"])->middleware('isStaff');
-Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('isStaff');
-Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('isStaff');
-Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('isStaff');
-Route::post('/edit-product/', [ProductController::class, "saveNewDetails"])->middleware('isStaff');
-Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('isStaff');
+Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('can:update,product');
+Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('can:update,product');
+Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('can:update,product');
+Route::post('/edit-product/{product}/', [ProductController::class, "saveNewDetails"])->middleware('can:update,product');
+Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('can:delete,product');

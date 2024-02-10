@@ -1,7 +1,8 @@
 <x-layout>
     <div class="container">
         <h1>Edit Product Details</h1>
-        <form action="/edit-product/" method="POST">
+        <a href="/manage-products/">&laquo; Back to Manage Products</a>
+        <form action="/edit-product/{{$product->id}}" method="POST">
             @csrf
             <div class="form-item">
                 <label for="name-edit">Product Name</label>
