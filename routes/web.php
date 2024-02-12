@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -38,3 +39,7 @@ Route::post('/change-product-image/{product}/', [ProductController::class, "save
 Route::get('/edit-product/{product}/', [ProductController::class, "editProductDetails"])->middleware('can:update,product');
 Route::post('/edit-product/{product}/', [ProductController::class, "saveNewDetails"])->middleware('can:update,product');
 Route::get('/delete-product/{product}/', [ProductController::class, "deleteProduct"])->middleware('can:delete,product');
+
+// Category CRUD (admins only)
+Route::get('/create-category/', [CategoryController::class, "createCategoryForm"])->middleware('isStaff');
+Route::post('/create-category/', [CategoryController::class, "createCategory"])->middleware('isStaff');

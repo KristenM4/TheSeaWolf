@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -49,7 +50,8 @@ class ProductController extends Controller
 
     function manageProducts() {
         $products = Product::all();
-        return view('products/manage-products', ['products' => $products]);
+        $categories = Category::all();
+        return view('products/manage-products', ['products' => $products, 'categories' => $categories]);
     }
 
     function ChangeProductImage(Product $product) {

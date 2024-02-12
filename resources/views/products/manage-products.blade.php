@@ -34,5 +34,33 @@
             </tr>
             @endforeach
         </table>
+        <h3>All Categories</h3>
+        <a href="/create-category/">New Category</a>
+        <table class="manage-products-table">
+            <tr>
+                <th>Name</th>
+                <th>No. of Products</th>
+            </tr>
+            @foreach ($categories as $category)
+            <tr>
+                <td>{{$category->name}}</td>
+                <td>
+                    @php
+                        $numProducts = App\Models\Product::where('category_id', $category->id)->count();
+                    @endphp
+                    {{$numProducts}}
+                </td>
+            </tr>
+            @endforeach
+            <tr>
+                <td>No Category</td>
+                <td>
+                    @php
+                        $uncategorizedProducts = App\Models\Product::where('category_id', 0)->count();
+                    @endphp
+                    {{$uncategorizedProducts}}
+                </td>
+            </tr>
+    </table>
     </div>
 </x-layout>
