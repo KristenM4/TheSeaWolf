@@ -352,6 +352,9 @@ form button[type=submit]:hover {
     margin-left: auto;
     margin-right: auto;
 }
+.single-product-image img {
+    width: 100%;
+}
 
 /* Manage Products Page */
 .manage-product-page h3 {
