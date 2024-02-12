@@ -26,4 +26,11 @@ class Product extends Model
             return $filePath . $fileName;
         });
     }
+
+    protected function totalPrice(): Attribute {
+        return Attribute::make(get: function() {
+            $discountedAmount = $this->discount * $this->price;
+            return number_format($this->price - $discountedAmount, 2);
+        });
+    }
 }

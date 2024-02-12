@@ -5,7 +5,10 @@
             <img src="{{$product->image_path}}" alt="{{$product->name}}">
         </div>
         <div class="single-product-info">
-            <h1>{{$product->name}}</h1>
+            <div>
+                <h1>{{$product->name}}</h1>
+                <h3>&#163;{{$product->totalPrice}}</h3>
+            </div>
             <p>{!! $product->description !!}</p>
         </div>
     </div>

@@ -31,7 +31,7 @@ Route::get('/product/{product}/', [ProductController::class, "productPage"]);
 
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
-Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('can:create,product');
+Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isStaff');
 Route::get('/manage-products/', [ProductController::class, "manageProducts"])->middleware('isStaff');
 Route::get('/change-product-image/{product}/', [ProductController::class, "changeProductImage"])->middleware('can:update,product');
 Route::post('/change-product-image/{product}/', [ProductController::class, "saveNewProductImage"])->middleware('can:update,product');
