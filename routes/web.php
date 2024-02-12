@@ -45,3 +45,4 @@ Route::get('/create-category/', [CategoryController::class, "createCategoryForm"
 Route::post('/create-category/', [CategoryController::class, "createCategory"])->middleware('isStaff');
 Route::get('/edit-category/{category}/', [CategoryController::class, "editCategoryDetails"])->middleware('isStaff');
 Route::post('/edit-category/{category}/', [CategoryController::class, "saveNewDetails"])->middleware('isStaff');
+Route::get('/delete-category/{category}/', [CategoryController::class, "deleteCategory"])->middleware('isStaff');

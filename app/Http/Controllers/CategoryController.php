@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -35,5 +36,11 @@ class CategoryController extends Controller
         $category->update($editCategoryFormData);
 
         return back()->with('success', 'Category details successfully changed.');
+    }
+
+    function deleteCategory(Category $category) {
+        Product::where('category_id', $category->id)->update(['category_id' => 0]);
+        $category->delete();
+        return redirect("/manage-products/")->with('success', 'Category successfully deleted.');
     }
 }

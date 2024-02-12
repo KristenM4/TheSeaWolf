@@ -108,6 +108,7 @@ class ProductController extends Controller
         $editProductFormData['description'] = strip_tags($editProductFormData['description']);
         $editProductFormData['price'] = strip_tags($editProductFormData['price']);
         $editProductFormData['discount'] = $editProductFormData['discount'] == null ? 0.00 : strip_tags($editProductFormData['discount']);
+        $editProductFormData['category_id'] = $editProductFormData['category'];
 
         $product->update($editProductFormData);
 
