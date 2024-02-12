@@ -122,6 +122,9 @@ class ProductController extends Controller
     }
 
     function deleteProduct(Product $product) {
+        if (!empty($product->image) && $product->image != 'no-image.jpg') {
+            Storage::delete('public/product-images/' . $product->image);
+        }
         $product->delete();
         return redirect("/manage-products/")->with('success', 'Product successfully deleted.');
     }
