@@ -35,6 +35,25 @@
                 <p class="form-error">{{$message}}</p>
                 @enderror
             </div>
+
+            <div class="form-item">
+                <label for="category-edit">Category</label>
+                <select name="category" id="category-edit">
+                    <option value="{{$product->category_id}}">
+                        @if($productCategory == null)
+                        None
+                        @else
+                        {{$productCategory->name}}
+                        @endif
+                    </option>
+                    @foreach($otherCategories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                @error('category')
+                <p class="form-error">{{$message}}</p>
+                @enderror
+            </div>
             <input value="{{$product->id}}" name="id" id="product-id" type="hidden" />
 
             <button type="submit">Save</button>

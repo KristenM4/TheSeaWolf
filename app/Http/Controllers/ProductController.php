@@ -17,13 +17,15 @@ class ProductController extends Controller
     }
 
     function createProductForm() {
-        return view('products/create-product');
+        $categories = Category::all();
+        return view('products/create-product', ['categories' => $categories]);
     }
     function createProduct(Request $request) {
         $createProductFormData = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
             'description' => ['required', 'min:2', 'max:500'],
             'price' => ['required'],
+            'category' => ['required'],
             'discount' => [],
         ]);
         $createProductFormData['name'] = strip_tags($createProductFormData['name']);
@@ -32,6 +34,7 @@ class ProductController extends Controller
         $createProductFormData['slug'] = $slugName;
         $createProductFormData['price'] = strip_tags($createProductFormData['price']);
         $createProductFormData['discount'] = $createProductFormData['discount'] == null ? 0.00 : strip_tags($createProductFormData['discount']);
+        $createProductFormData['category_id'] = $createProductFormData['category'];
 
         $productImg = Image::make($request->file('image'))
             ->resize(500, 800, function ($constraint) {
@@ -87,7 +90,9 @@ class ProductController extends Controller
     }
 
     function editProductDetails(Product $product) {
-        return view('products/edit-product-details', ['product' => $product]);
+        $productCategory = Category::find($product->category_id);
+        $otherCategories = Category::all()->where('id', '!=', $product->category_id);
+        return view('products/edit-product-details', ['product' => $product, 'productCategory' => $productCategory, 'otherCategories' => $otherCategories]);
     }
 
     function saveNewDetails(Product $product, Request $request) {
@@ -96,6 +101,7 @@ class ProductController extends Controller
             'description' => ['required', 'min:2', 'max:500'],
             'price' => ['required'],
             'discount' => [],
+            'category' => ['required'],
             'id' => [],
         ]);
         $editProductFormData['name'] = strip_tags($editProductFormData['name']);
@@ -109,6 +115,7 @@ class ProductController extends Controller
         $product->description = $editProductFormData['description'];
         $product->price = $editProductFormData['price'];
         $product->discount = $editProductFormData['discount'];
+        $product->category_id = $editProductFormData['category'];
         $product->save();
 
         return back()->with('success', 'Product details successfully changed.');

@@ -16,7 +16,8 @@ class Product extends Model
         'description',
         'price',
         'discount',
-        'image'
+        'image',
+        'category_id'
     ];
 
     protected function imagePath(): Attribute {

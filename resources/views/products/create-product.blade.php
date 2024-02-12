@@ -43,6 +43,21 @@
                 @enderror
             </div>
 
+            <div class="form-item">
+                <label for="category-create">Category</label>
+                <select name="category" id="category-create">
+                    <option value="">
+                        Select One
+                    </option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                @error('category')
+                <p class="form-error">{{$message}}</p>
+                @enderror
+            </div>
+
             <button type="submit">Create Product</button>
         </form>
     </div>
