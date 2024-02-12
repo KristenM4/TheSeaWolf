@@ -43,7 +43,12 @@
             </tr>
             @foreach ($categories as $category)
             <tr>
-                <td>{{$category->name}}</td>
+                <td>
+                    <div>
+                        {{$category->name}}
+                        <a href="/edit-category/{{$category->id}}/" title="Edit details">Edit details</a>
+                    </div>
+                </td>
                 <td>
                     @php
                         $numProducts = App\Models\Product::where('category_id', $category->id)->count();

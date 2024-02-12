@@ -109,14 +109,7 @@ class ProductController extends Controller
         $editProductFormData['price'] = strip_tags($editProductFormData['price']);
         $editProductFormData['discount'] = $editProductFormData['discount'] == null ? 0.00 : strip_tags($editProductFormData['discount']);
 
-        $product = Product::find($editProductFormData['id']);
-
-        $product->name = $editProductFormData['name'];
-        $product->description = $editProductFormData['description'];
-        $product->price = $editProductFormData['price'];
-        $product->discount = $editProductFormData['discount'];
-        $product->category_id = $editProductFormData['category'];
-        $product->save();
+        $product->update($editProductFormData);
 
         return back()->with('success', 'Product details successfully changed.');
     }
