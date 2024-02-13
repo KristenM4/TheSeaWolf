@@ -348,6 +348,24 @@ form button[type=submit]:hover {
         text-align: start;
     }
 }
+.discounted-product {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .discounted-product {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+.discounted-percentage {
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: var(--sw-blue-100);
+}
 .single-product-image {
     margin-left: auto;
     margin-right: auto;
