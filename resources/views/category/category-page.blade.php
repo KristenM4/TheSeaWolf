@@ -2,6 +2,7 @@
 
         <div class="container">
         <h2 class="home-products-title">{{$category->name}}</h2>
+        <h3>{{$category->numProducts}} found</h3>
         <div class="home-products">
             @foreach ($products as $product)
             <a href="/product/{{$product->id}}">

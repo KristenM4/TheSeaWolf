@@ -56,10 +56,7 @@
                     </div>
                 </td>
                 <td>
-                    @php
-                        $numProducts = App\Models\Product::where('category_id', $category->id)->count();
-                    @endphp
-                    {{$numProducts}}
+                    {{$category->numProducts}}
                 </td>
             </tr>
             @endforeach
