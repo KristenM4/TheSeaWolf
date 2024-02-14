@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    function categoryPage(Category $category) {
+        $products = Product::all()->where('category_id', $category->id);
+        return view('category/category-page', ['category' => $category, 'products' => $products]);
+    }
+
     function createCategoryForm() {
         return view('category/create-category');
     }

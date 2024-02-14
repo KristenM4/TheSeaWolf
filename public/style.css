@@ -255,6 +255,7 @@ form button[type=submit]:hover {
 .home-products {
     display: grid;
     gap: 20px;
+    margin-bottom: 50px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
     @media screen and (min-width: 1024px) {
@@ -270,15 +271,23 @@ form button[type=submit]:hover {
     flex-direction: column;
     gap: 5px;
     justify-content: center;
-    border: 1px solid var(--sw-blue-100);
+    border: 3px solid var(--sw-blue-100);
     border-radius: 3px;
     text-align: center;
     padding: 16px 8px;
     height: 100%;
 }
 .home-product-card:hover {
-    background-color: var(--sw-blue-100);
+    border-color: var(--sw-blue-300);
     cursor: pointer;
+    transition-duration: 150ms;
+}
+.home-product-card > img {
+    width: 10rem;
+    height: 13rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 .home-products a:hover{
     text-decoration: none;

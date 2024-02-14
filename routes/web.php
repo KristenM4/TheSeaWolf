@@ -30,6 +30,9 @@ Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->m
 // Products
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
 
+// Categories
+Route::get('/category/{category}/', [CategoryController::class, "categoryPage"]);
+
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
 Route::post('/create-product/', [ProductController::class, "createProduct"])->middleware('isStaff');
