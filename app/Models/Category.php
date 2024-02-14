@@ -18,7 +18,13 @@ class Category extends Model
 
     protected function numProducts(): Attribute {
         return Attribute::make(get: function() {
-            return \App\Models\Product::where('category_id', $this->id)->count();;
+            return Product::where('category_id', $this->id)->count();
+        });
+    }
+
+    protected function categoryProducts(): Attribute {
+        return Attribute::make(get: function() {
+            return Product::all()->where('category_id', $this->id);
         });
     }
 

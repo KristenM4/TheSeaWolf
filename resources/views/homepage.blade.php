@@ -38,6 +38,22 @@
             <p>Or <a href="/signup/">Sign Up</a></p>
         </div>
         @endauth
+        @foreach($categories as $category)
+        <div class="category-title">
+            <h2 class="home-products-title">{{$category->name}}</h2>
+            <a href="/category/{{$category->id}}" title="See All" style="padding-bottom:5px;">See All</a>
+        </div>
+        <div class="home-products">
+            @foreach ($category->categoryProducts as $product)
+            <a href="/product/{{$product->id}}">
+                <div class="home-product-card">
+                    <img src="{{$product->image_path}}" alt="{{$product->name}}">
+                    {{$product->name}}
+                </div>
+            </a>
+            @endforeach
+        </div>
+        @endforeach
         <h2 class="home-products-title">All Products</h2>
         <div class="home-products">
             @foreach ($products as $product)
