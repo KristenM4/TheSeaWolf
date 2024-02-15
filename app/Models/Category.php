@@ -17,6 +17,10 @@ class Category extends Model
         'slug'
     ];
 
+    public function getRouteKeyName(){
+        return "slug";
+    }
+
     protected function numProducts(): Attribute {
         return Attribute::make(get: function() {
             return Product::where('category_id', $this->id)->count();

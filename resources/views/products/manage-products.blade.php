@@ -16,14 +16,14 @@
                     <div>
                         {{$product->name}}
                         @can('update', $product)
-                        <a href="/change-product-image/{{$product->id}}/" title="Change image">Change image</a>
-                        <a href="/edit-product/{{$product->id}}/" title="Edit details">Edit details</a>
+                        <a href="/change-product-image/{{$product->slug}}/" title="Change image">Change image</a>
+                        <a href="/edit-product/{{$product->slug}}/" title="Edit details">Edit details</a>
                         @endcan
                         @can('delete', $product)
                         <button class="delete-product" title="Delete product">Delete
                         <div class="delete-section">
                             <p>Are you sure you want to delete this product? This action cannot be undone.</p>
-                            <a href="/delete-product/{{$product->id}}/">Delete</a>
+                            <a href="/delete-product/{{$product->slug}}/">Delete</a>
                         </div>
                         </button>
                         @endcan
@@ -46,11 +46,11 @@
                 <td>
                     <div>
                         {{$category->name}}
-                        <a href="/edit-category/{{$category->id}}/" title="Edit details">Edit details</a>
+                        <a href="/edit-category/{{$category->slug}}/" title="Edit details">Edit details</a>
                         <button class="delete-product" title="Delete category">Delete
                         <div class="delete-section">
                             <p>Are you sure you want to delete this category? This action cannot be undone.</p>
-                            <a href="/delete-category/{{$category->id}}/">Delete</a>
+                            <a href="/delete-category/{{$category->slug}}/">Delete</a>
                         </div>
                         </button>
                     </div>
