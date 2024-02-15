@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -19,8 +20,9 @@ class CategoryController extends Controller
 
     function createCategory(Request $request) {
         $createCategoryFormData = $request->validate([
-            'name' => ['required', 'min:2', 'max:100']
+            'name' => ['required', 'unique:category', 'min:2', 'max:100']
         ]);
+        $createCategoryFormData['slug'] = Str::slug($createCategoryFormData['name']);
         $createCategoryFormData['name'] = strip_tags($createCategoryFormData['name']);
 
         Category::create($createCategoryFormData);
@@ -34,10 +36,11 @@ class CategoryController extends Controller
 
     function saveNewDetails(Category $category, Request $request) {
         $editCategoryFormData = $request->validate([
-            'name' => ['required', 'min:2', 'max:100'],
+            'name' => ['required', 'unique:category', 'min:2', 'max:100'],
             'id' => [],
         ]);
         $editCategoryFormData['name'] = strip_tags($editCategoryFormData['name']);
+        $editCategoryFormData['slug'] = Str::slug($editCategoryFormData['name']);
         $category->update($editCategoryFormData);
 
         return back()->with('success', 'Category details successfully changed.');
