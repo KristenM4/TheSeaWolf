@@ -20,6 +20,10 @@ class Product extends Model
         'category_id'
     ];
 
+    public function getRouteKeyName(){
+        return "slug";
+    }
+
     protected function imagePath(): Attribute {
         return Attribute::make(get: function() {
             $filePath = '/storage/product-images/';
