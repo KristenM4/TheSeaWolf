@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         $newProduct = Product::create($createProductFormData);
 
-        return redirect("/product/{$newProduct->id}")->with('success', 'New product successfully created.');
+        return redirect("/product/{$newProduct->slug}")->with('success', 'New product successfully created.');
     }
 
     function manageProducts() {
@@ -110,9 +110,19 @@ class ProductController extends Controller
         $editProductFormData['discount'] = $editProductFormData['discount'] == null ? 0.00 : strip_tags($editProductFormData['discount']);
         $editProductFormData['category_id'] = $editProductFormData['category'];
 
+        if ($product->name != $editProductFormData['name']) {
+            $newSlug = Str::slug($editProductFormData['name']) . '-' . substr(bin2hex(random_bytes(4)), 0, 8);
+            $newImageName = $newSlug . '-image.jpg';
+            Storage::move('public/product-images/' . $product->image, 'public/product-images/' . $newImageName);
+
+            $editProductFormData['slug'] = $newSlug;
+            $editProductFormData['image'] = $newImageName;
+        }
+
         $product->update($editProductFormData);
 
-        return back()->with('success', 'Product details successfully changed.');
+        return redirect('/edit-product/' . $product->slug . '/')->with('success', 'Product details successfully changed.');
+
     }
 
     function deleteProduct(Product $product) {

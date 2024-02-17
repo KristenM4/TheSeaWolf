@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Edit Product Details</h1>
         <a href="/manage-products/">&laquo; Back to Manage Products</a>
-        <form action="/edit-product/{{$product->id}}" method="POST">
+        <form action="/edit-product/{{$product->slug}}" method="POST">
             @csrf
             <div class="form-item">
                 <label for="name-edit">Product Name</label>
