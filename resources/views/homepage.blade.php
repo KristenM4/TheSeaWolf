@@ -65,5 +65,6 @@
             </a>
             @endforeach
         </div>
+        {{$products->links()}}
     </div>
 </x-layout>

@@ -233,6 +233,34 @@ form button[type=submit]:hover {
     background-color: var(--sw-blue-700);
 }
 
+/* Pagination */
+ul.pagination {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+.pagination li {
+    border-radius: 70px;
+    padding: 6px 10px;
+    border: 2px solid var(--sw-blue-500);
+    background-color: var(--sw-blue-700);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.pagination li:hover {
+    background-color: var(--sw-blue-900);
+    transition-duration: 200ms;
+}
+.pagination li a:hover {
+    text-decoration: none;
+}
+.pagination li.active {
+    border-color: var(--sw-blue-300);
+}
+
 /* Homepage */
 .homepage-hero {
     display: flex;

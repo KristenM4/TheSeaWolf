@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function homepage() {
         $categories = Category::all()->where('numProducts', '>', 0);
-        $products = Product::all();
+        $products = Product::paginate(6);
         return view('homepage', ['products' => $products, 'categories' => $categories]);
     }
 }
