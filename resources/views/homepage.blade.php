@@ -44,7 +44,7 @@
             <a href="/category/{{$category->slug}}/" title="See All" style="padding-bottom:5px;">See All</a>
         </div>
         <div class="home-products">
-            @foreach ($category->categoryProducts as $product)
+            @foreach ($category->products as $product)
             <a href="/product/{{$product->slug}}/">
                 <div class="home-product-card">
                     <img src="{{$product->image_path}}" alt="{{$product->name}}">

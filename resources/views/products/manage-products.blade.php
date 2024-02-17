@@ -56,7 +56,7 @@
                     </div>
                 </td>
                 <td>
-                    {{$category->numProducts}}
+                    {{$category->products->count();}}
                 </td>
             </tr>
             @endforeach
