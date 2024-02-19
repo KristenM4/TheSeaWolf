@@ -85,6 +85,12 @@ a:hover {
         gap: 20px;
     }
 }
+@media screen and (min-width: 768px) {
+    #main-nav .container {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
 #main-nav .logo {
     font-weight: 700;
     font-size: 28px;
@@ -119,9 +125,49 @@ a:hover {
 #main-nav nav a {
     width: fit-content;
 }
-#main-nav nav a img {
-    width: 1.8rem;
-    height: 1.5rem;
+@media screen and (min-width: 768px) {
+    .user-section {
+        position: relative;
+    }
+    #user-icon {
+        width: 2rem;
+        height: 1.5rem;
+        cursor: pointer;
+    }
+    .user-dropdown {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        display: none;
+        position: absolute;
+        top: 40;
+        left: -20;
+        background-color: var(--sw-blue-700);
+        padding: 15px 12px;
+        width: max-content;
+
+    }
+    .user-dropdown a {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .user-section:active .user-dropdown, .user-section:focus .user-dropdown {
+        display: flex;
+    }
+    .user-dropdown:hover {
+    display: block;
+    }
+}
+@media screen and (max-width: 768px) {
+    #user-icon {
+            display: none;
+    }
+    .user-dropdown {
+        display:flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 20px;
+    }
 }
 #nav-mobile {
     margin-top: auto;

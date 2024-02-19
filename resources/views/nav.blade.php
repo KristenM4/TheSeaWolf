@@ -14,8 +14,13 @@
             <a href="/">Home</a>
             <a href="">About</a>
             @auth
-            <a href="/user-profile/" aria-label="User Profile" title="User Profile"><img src="{{url('/images/user-icon.svg')}}"></a>
-            <a href="/logout">Sign out</a>
+            <div class="user-section" tabindex="1">
+                <img id="user-icon" src="{{url('/images/user-icon.svg')}}" alt="User dropdown icon">
+                <div class="user-dropdown">
+                    <a href="/user-profile/" title="User Profile">Profile</a>
+                    <a href="/logout" title="Sign Out">Sign out</a>
+                </div>
+            </div>
             @else
             <a href="/signup/">Sign Up</a>
             @endauth
