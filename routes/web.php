@@ -24,6 +24,8 @@ Route::get('/', [HomeController::class, "homepage"])->name('login');
 Route::post('/login/', [AccountsController::class, "login"])->middleware('guest');
 Route::get('/logout/', [AccountsController::class, "logout"])->middleware('isLoggedIn');
 Route::get('/user-profile/', [AccountsController::class, "userProfile"])->middleware('isLoggedIn');
+Route::get('/edit-user/', [AccountsController::class, "editUser"])->middleware('isLoggedIn');
+Route::post('/edit-user/', [AccountsController::class, "saveNewDetails"])->middleware('isLoggedIn');
 Route::get('/signup/', [AccountsController::class, "signup"])->middleware('guest');
 Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->middleware('guest');
 

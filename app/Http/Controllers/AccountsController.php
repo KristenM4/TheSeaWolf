@@ -55,4 +55,22 @@ class AccountsController extends Controller
 
         return redirect('/')->with('success', 'Your account has successfully been created.');
     }
+
+    public function editUser() {
+        return view('accounts/edit-user');
+    }
+
+    public function saveNewDetails(Request $request) {
+        $editUserFormData = $request->validate([
+            'first_name' => ['required', 'min:2', 'max:50'],
+            'last_name' => ['required', 'min:2', 'max:50'],
+            'email' => ['required', 'email', 'min:3', 'max:50', Rule::unique('users')->ignore(auth()->user()->id),],
+        ]);
+        $editUserFormData['first_name'] = strip_tags($editUserFormData['first_name']);
+        $editUserFormData['last_name'] = strip_tags($editUserFormData['last_name']);
+        $editUserFormData['email'] = strip_tags($editUserFormData['email']);
+        auth()->user()->update($editUserFormData);
+
+        return back()->with('success', 'User details successfully changed.');
+    }
 }
