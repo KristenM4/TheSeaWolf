@@ -1,4 +1,5 @@
 <x-layout>
+@section('description', $product->name . ' - The Sea Wolf Surf and Diving Shop')
     <div class="container single-product-page">
         <!-- Product image will go here -->
         <div class="single-product-image">

@@ -1,5 +1,5 @@
 <x-layout>
-
+@section('description', 'Find your favorite surfing and diving products at The Sea Wolf.')
         <div class="container">
         <h2 class="home-products-title">{{$category->name}}</h2>
         <h3>{{$category->numProducts}} found</h3>

@@ -1,4 +1,5 @@
 <x-layout>
+@section('description', '')
     <div class="container change-product-image-page">
         <div>
             <h1>Change Product Image</h1>

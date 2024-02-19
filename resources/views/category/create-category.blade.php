@@ -1,4 +1,5 @@
 <x-layout>
+@section('description', '')
     <div class="container">
         <h1>Create a New Category</h1>
         <form action="/create-category/" method="POST" enctype="multipart/form-data">

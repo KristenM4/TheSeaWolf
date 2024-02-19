@@ -1,5 +1,5 @@
 <x-layout>
-
+@section('description', 'The Sea Wolf Surf and Diving Shop is the best place in the UK to get your surfing and diving equipment.')
         <div class="homepage-hero">
             <div class="container">
                 <h1>The Sea Wolf</h1>

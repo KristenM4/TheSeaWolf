@@ -4,7 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <title>The Sea Wolf</title>
+    <title>The Sea Wolf - Surf and Diving Shop</title>
+    <meta name="description" content="@yield('description')" />
+    <meta property="og:description" content="@yield('description')" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="The Sea Wolf" />
+    <meta property="og:url" content="<?php echo url()->current() ?>" />
+    <link rel="canonical" href="<?php echo url()->current() ?>" />
 </head>
 <body>
     <div class="page-content">

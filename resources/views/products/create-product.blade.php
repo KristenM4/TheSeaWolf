@@ -1,4 +1,5 @@
 <x-layout>
+@section('description', '')
     <div class="container">
         <h1>Create a New Product</h1>
         <form action="/create-product/" method="POST" enctype="multipart/form-data">

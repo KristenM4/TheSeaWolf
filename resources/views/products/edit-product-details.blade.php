@@ -1,4 +1,5 @@
 <x-layout>
+@section('description', '')
     <div class="container">
         <h1>Edit Product Details</h1>
         <a href="/manage-products/">&laquo; Back to Manage Products</a>
