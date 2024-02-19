@@ -14,7 +14,7 @@
             <a href="/">Home</a>
             <a href="">About</a>
             @auth
-            <a href="/user-profile/">My Profile</a>
+            <a href="/user-profile/" aria-label="User Profile" title="User Profile"><img src="{{url('/images/user-icon.svg')}}"></a>
             <a href="/logout">Sign out</a>
             @else
             <a href="/signup/">Sign Up</a>

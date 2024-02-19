@@ -119,6 +119,10 @@ a:hover {
 #main-nav nav a {
     width: fit-content;
 }
+#main-nav nav a img {
+    width: 1.8rem;
+    height: 1.5rem;
+}
 #nav-mobile {
     margin-top: auto;
     margin-bottom: auto;
