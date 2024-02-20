@@ -18,6 +18,10 @@
                 @endif
             </div>
             <p>{!! $product->description !!}</p>
+            <button class="cart-btn">
+                <img src="{{url('/images/cart-plus.svg')}}" alt="Add to cart">
+                Add to Cart
+            </button>
         </div>
     </div>
 </x-layout>

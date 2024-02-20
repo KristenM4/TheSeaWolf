@@ -478,6 +478,28 @@ ul.pagination {
 .single-product-image img {
     width: 100%;
 }
+.cart-btn {
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    font-size: 16px;
+    border-style: hidden;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--sw-blue-500);
+    padding: 10px 12px;
+}
+.cart-btn:hover {
+    background-color: var(--sw-blue-300);
+    transition-duration: 200ms;
+}
+.cart-btn img {
+    width: 2rem;
+    height: 1.5rem;
+}
 
 /* Manage Products Page */
 .manage-product-page h3 {
