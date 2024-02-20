@@ -1,4 +1,5 @@
 <x-layout>
+@section('title', auth()->user()->first_name . "'s Profile")
 @section('description', 'View and edit your user details here.')
     <div class="container">
         <h1>Your Profile</h1>

@@ -4,7 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <title>The Sea Wolf - Surf and Diving Shop</title>
+    <title>
+        @if($__env->yieldContent('title'))
+            @yield('title') - The Sea Wolf Surf and Diving Shop
+        @else
+            The Sea Wolf Surf and Diving Shop
+        @endif
+    </title>
     <meta name="description" content="@yield('description')" />
     <meta property="og:description" content="@yield('description')" />
 	<meta property="og:locale" content="en_GB" />

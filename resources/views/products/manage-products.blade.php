@@ -1,4 +1,5 @@
 <x-layout>
+@section('title', 'Manage Products')
 @section('description', '')
     <div class="container manage-product-page">
         <h1>Manage Products</h1>

@@ -1,4 +1,5 @@
 <x-layout>
+@section('title', 'Sign Up')
 @section('description', 'Create a customer account on The Sea Wolf to get the best prices in the UK on surfing and diving equipment.')
     <div class="container signup-form-container">
         <h1>Sign Up</h1>
