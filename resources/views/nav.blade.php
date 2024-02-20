@@ -24,7 +24,9 @@
             @else
             <a href="/signup/">Sign Up</a>
             @endauth
-            <img id="cart" src="{{url('/images/cart.svg')}}" alt="Shopping cart" title="Shopping cart">
+            <a href="/cart/" title="View Cart">
+                <img id="cart" src="{{url('/images/cart.svg')}}" alt="Shopping cart">
+            </a>
         </nav>
     </div>
 </header>

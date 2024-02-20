@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::post('/product/{product}/', [ProductController::class, "addToCart"]);
 
 // Categories
 Route::get('/category/{category}/', [CategoryController::class, "categoryPage"]);
+
+// Cart
+Route::get('/cart/', [CartController::class, "cartPage"]);
 
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
