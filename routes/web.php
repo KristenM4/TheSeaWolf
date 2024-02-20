@@ -31,6 +31,7 @@ Route::post('/signup-success/', [AccountsController::class, "signupSuccess"])->m
 
 // Products
 Route::get('/product/{product}/', [ProductController::class, "productPage"]);
+Route::post('/product/{product}/', [ProductController::class, "addToCart"]);
 
 // Categories
 Route::get('/category/{category}/', [CategoryController::class, "categoryPage"]);

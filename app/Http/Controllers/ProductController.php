@@ -16,6 +16,11 @@ class ProductController extends Controller
         return view('products/productpage', ['product' => $product]);
     }
 
+    function addToCart(Product $product, Request $request) {
+        $request->session()->push('cartItems', ['id' => $product->id, 'quantity' => 1]);
+        return back();
+    }
+
     function createProductForm() {
         $categories = Category::all();
         return view('products/create-product', ['categories' => $categories]);
