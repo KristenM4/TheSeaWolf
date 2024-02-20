@@ -125,6 +125,11 @@ a:hover {
 #main-nav nav a {
     width: fit-content;
 }
+#cart {
+    width: 2rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
 @media screen and (min-width: 768px) {
     .user-section {
         position: relative;
