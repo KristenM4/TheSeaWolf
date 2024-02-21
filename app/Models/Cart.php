@@ -14,26 +14,24 @@ class Cart extends Model
     protected $table = 'cart';
 
     protected $fillable = [
-        'products',
-        'user_id'
+        'user_id',
+        'product_id',
+        'quantity'
     ];
+
+    protected $primaryKey = 'user_id';
 
     protected function getProducts(): Attribute {
         return Attribute::make(get: function() {
-            if(!empty($this->products)) {
-                $products_array = explode(',', $this->products);
-                array_pop($products_array);
-                $formatted_products = [];
-                foreach($products_array as $product) {
-                    $product_and_quantity = explode(' ', $product);
-                    $product = Product::find($product_and_quantity[0]);
-                    $formatted_product_and_quantity = [
-                        'product' => $product,
-                        'quantity' => $product_and_quantity[1]
-                    ];
-                    array_push($formatted_products, $formatted_product_and_quantity);
+            $userCart = Cart::all()->where('user_id', $this->user_id);
+            if($userCart->count() > 0) {
+                $cartItems = [];
+                foreach($userCart as $item) {
+                    $product = Product::find($item->product_id);
+                    $quantity = $item->quantity;
+                    array_push($cartItems, ['product' => $product, 'quantity' => $quantity]);
                 }
-                return $formatted_products;
+                return $cartItems;
             }
             return false;
         });

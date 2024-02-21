@@ -8,10 +8,7 @@ class CartController extends Controller
 {
     function cartPage() {
         if(auth()->check()) {
-            $cart = Cart::firstOrCreate(
-                ['user_id' => auth()->user()->id],
-                ['products' => '']
-            );
+            $cart = Cart::find(auth()->user()->id);
             $cartItems = $cart->getProducts;
         }
         else{

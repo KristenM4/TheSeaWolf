@@ -19,13 +19,19 @@ class ProductController extends Controller
 
     function addToCart(Product $product, Request $request) {
         if(auth()->check()) {
-            $cart = Cart::firstOrCreate(
-                ['user_id' => auth()->user()->id],
-                ['products' => '']
-            );
-            $formatted_product = $product->id . ' ' . 1 . ',';
-            $cart->products = $cart->products . $formatted_product;
-            $cart->save();
+            $id = auth()->user()->id;
+            $userCart = Cart::all()->where('user_id', $id);
+            if ($userCart->count() == 0) {
+                Cart::create(['user_id' => $id, 'product_id' => $product->id, 'quantity' => 1]);
+            }
+            else if($userCart->where('product_id', $product->id)->count() > 0) {
+                $productInCart = Cart::where('product_id', $product->id)->where('user_id', $id)->first();
+                $productInCart->quantity = $productInCart->quantity + 1;
+                $productInCart->save();
+            }
+            else {
+                Cart::create(['user_id' => $id, 'product_id' => $product->id, 'quantity' => 1]);
+            }
         }
         else {
             $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
