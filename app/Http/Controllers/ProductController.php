@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cart;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,7 +18,18 @@ class ProductController extends Controller
     }
 
     function addToCart(Product $product, Request $request) {
-        $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
+        if(auth()->check()) {
+            $cart = Cart::firstOrCreate(
+                ['user_id' => auth()->user()->id],
+                ['products' => '']
+            );
+            $formatted_product = $product->id . ' ' . 1 . ',';
+            $cart->products = $cart->products . $formatted_product;
+            $cart->save();
+        }
+        else {
+            $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
+        }
         return back();
     }
 
