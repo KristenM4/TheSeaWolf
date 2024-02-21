@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function cartPage(Request $request) {
-        return 'this is your cart';
+    function cartPage() {
+        $cartItems = session('cartItems');
+        return view('cart/cartpage', ['cartitems' => $cartItems]);
     }
 }

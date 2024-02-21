@@ -17,7 +17,7 @@ class ProductController extends Controller
     }
 
     function addToCart(Product $product, Request $request) {
-        $request->session()->push('cartItems', ['id' => $product->id, 'quantity' => 1]);
+        $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
         return back();
     }
 
