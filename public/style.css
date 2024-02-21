@@ -156,11 +156,11 @@ a:hover {
         font-size: 18px;
         font-weight: 500;
     }
-    .user-section:active .user-dropdown, .user-section:focus .user-dropdown {
+    .user-section:active .user-dropdown, div.user-section:focus .user-dropdown {
         display: flex;
     }
     .user-dropdown:hover {
-    display: block;
+    display: flex;
     }
 }
 @media screen and (max-width: 768px) {
