@@ -14,7 +14,12 @@
                 </div>
                 <div class="cart-item-info">
                     <div>&#163;{{$item['product']->totalPrice}}</div>
-                    <div>qty: {{$item['quantity']}}</div>
+                    <div>
+                        <a href="/cart-item-plus/{{$item['product']->slug}}/">plus</a>
+                        qty: {{$item['quantity']}}
+                        <a href="/cart-item-minus/{{$item['product']->slug}}/">minus</a>
+                        <a href="/cart-item-delete/{{$item['product']->slug}}/">delete</a>
+                    </div>
                 </div>
             </div>
             @endforeach
