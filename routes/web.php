@@ -40,6 +40,7 @@ Route::get('/category/{category}/', [CategoryController::class, "categoryPage"])
 // Cart
 Route::get('/cart/', [CartController::class, "cartPage"]);
 Route::get('/cart-item-plus/{product}/', [CartController::class, "cartIncrement"]);
+Route::get('/cart-item-minus/{product}/', [CartController::class, "cartDecrement"]);
 
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');
