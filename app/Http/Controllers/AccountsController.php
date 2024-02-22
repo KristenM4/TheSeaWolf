@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Cart;
 
 class AccountsController extends Controller
 {
@@ -51,6 +52,11 @@ class AccountsController extends Controller
         $signupFormData['staff'] = false;
 
         $newUser = User::create($signupFormData);
+        if (session('cartItems')) {
+            foreach(session('cartItems') as $item) {
+                Cart::create(['user_id' => $newUser->id, 'product_id' => $item['product']->id, 'quantity' => $item['quantity']]);
+            }
+        }
         auth()->login($newUser);
 
         return redirect('/')->with('success', 'Your account has successfully been created.');
