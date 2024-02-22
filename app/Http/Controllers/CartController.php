@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function cartPage(Request $request) {
+    function cartPage() {
         if(auth()->check()) {
             $cart = Cart::find(auth()->user()->id);
             $cartItems = $cart->getProducts;
