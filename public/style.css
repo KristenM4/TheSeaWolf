@@ -639,5 +639,27 @@ ul.pagination {
 .cart-item-info a {
     text-decoration: underline;
     width: fit-content;
-    font-size: 13px;
+}
+.cart-info-and-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+.cart-icons-section {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.icon-in-cart {
+    width: 1.5rem;
+    height: 1.2rem;
+}
+.trash-icon-in-cart {
+    width: 1.2rem;
+    height: 1.5rem;
+}
+.quantity {
+    font-weight: 600;
+    font-size: 18px;
 }

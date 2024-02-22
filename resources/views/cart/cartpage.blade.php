@@ -12,14 +12,17 @@
                     {{$item['product']->name}}
                     <a href="/product/{{$item['product']->slug}}/">View store page</a>
                 </div>
-                <div class="cart-item-info">
-                    <div>&#163;{{$item['product']->totalPrice}}</div>
-                    <div>
-                        <a href="/cart-item-plus/{{$item['product']->slug}}/">plus</a>
-                        qty: {{$item['quantity']}}
-                        <a href="/cart-item-minus/{{$item['product']->slug}}/">minus</a>
-                        <a href="/cart-item-delete/{{$item['product']->slug}}/">delete</a>
+                <div class="cart-info-and-icons">
+                    <div class="cart-item-info">
+                        <div>&#163;{{$item['product']->totalPrice}}</div>
+                        <div class="cart-icons-section">
+                            <a href="/cart-item-minus/{{$item['product']->slug}}/"><img class="icon-in-cart" src="{{url('/images/minus.svg')}}" alt="A minus sign"></a>
+                            <span class="quantity">{{$item['quantity']}}</span>
+                            <a href="/cart-item-plus/{{$item['product']->slug}}/"><img class="icon-in-cart" src="{{url('/images/plus.svg')}}" alt="A plus sign"></a>
+
+                        </div>
                     </div>
+                    <a href="/cart-item-delete/{{$item['product']->slug}}/" title="Remove"><img class="trash-icon-in-cart" src="{{url('/images/trash.svg')}}" alt="A trash can icon"></a>
                 </div>
             </div>
             @endforeach
