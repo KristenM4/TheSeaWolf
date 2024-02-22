@@ -34,7 +34,23 @@ class ProductController extends Controller
             }
         }
         else {
-            $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
+            if(!session('cartItems')) {
+                $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
+            }
+            else {
+                foreach(session('cartItems') as $index => $item) {
+                    if($item['product']->id == $product->id) {
+                        $quantity = $item['quantity'] + 1;
+
+                        $cartItems = session('cartItems');
+                        $cartItems[$index] = ['product' => $product, 'quantity' => $quantity];
+                        $request->session()->forget('cartItems');
+                        $request->session()->push('cartItems', $cartItems[0]);
+                        return back()->with('cartSuccess', 'This item has been added to your cart!');
+                    }
+                }
+                $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
+            }
         }
         return back()->with('cartSuccess', 'This item has been added to your cart!');
     }
