@@ -41,6 +41,7 @@ Route::get('/category/{category}/', [CategoryController::class, "categoryPage"])
 Route::get('/cart/', [CartController::class, "cartPage"]);
 Route::get('/cart-item-plus/{product}/', [CartController::class, "cartIncrement"]);
 Route::get('/cart-item-minus/{product}/', [CartController::class, "cartDecrement"]);
+Route::get('/cart-item-delete/{product}/', [CartController::class, "cartDelete"]);
 
 // Products CRUD (admins only)
 Route::get('/create-product/', [ProductController::class, "createProductForm"])->middleware('isStaff');

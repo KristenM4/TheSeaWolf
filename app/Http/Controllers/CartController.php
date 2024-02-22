@@ -11,7 +11,7 @@ class CartController extends Controller
     function cartPage() {
         if(auth()->check()) {
             $cart = Cart::find(auth()->user()->id);
-            $cartItems = $cart->getProducts;
+            $cartItems = $cart ? $cart->getProducts : null;
         }
         else{
             $cartItems = session('cartItems');
@@ -67,6 +67,25 @@ class CartController extends Controller
                         $request->session()->forget('cartItems');
                         empty($cartItems) ? :  $request->session()->push('cartItems', $cartItems[0]);
                     }
+                }
+            }
+        }
+        return back();
+    }
+
+    function cartDelete(Product $product, Request $request) {
+        if(auth()->check()) {
+            $cartItem = Cart::where('user_id', auth()->user()->id)->where('product_id', $product->id)->first();
+            $cartItem->delete();
+        }
+        else{
+            foreach(session('cartItems') as $index => $item) {
+                if($item['product']->id == $product->id) {
+                    $cartItems = session('cartItems');
+                    unset($cartItems[$index]);
+                    $request->session()->forget('cartItems');
+                    empty($cartItems) ? :  $request->session()->push('cartItems', $cartItems[0]);
+
                 }
             }
         }
