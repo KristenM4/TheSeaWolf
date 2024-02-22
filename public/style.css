@@ -500,6 +500,12 @@ ul.pagination {
     width: 2rem;
     height: 1.5rem;
 }
+.cart-success-message {
+    color: #047857;
+}
+.cart-success-message a {
+    text-decoration: underline;
+}
 
 /* Manage Products Page */
 .manage-product-page h3 {

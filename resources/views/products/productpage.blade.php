@@ -26,6 +26,12 @@
                     Add to Cart
                 </button>
             </form>
+            @if(session()->has('cartSuccess'))
+            <div class="cart-success-message">
+                <p>{{session('cartSuccess')}}</p>
+                <a href="/cart/">Click here</a> to go to your cart.
+            </div>
+            @endif
         </div>
     </div>
 </x-layout>

@@ -36,7 +36,7 @@ class ProductController extends Controller
         else {
             $request->session()->push('cartItems', ['product' => $product, 'quantity' => 1]);
         }
-        return back();
+        return back()->with('cartSuccess', 'This item has been added to your cart!');
     }
 
     function createProductForm() {
