@@ -18,7 +18,6 @@
                 @error('image')
                 <p class="form-error">{{$message}}</p>
                 @enderror
-                <input value="{{$product->id}}" name="id" id="product-id" type="hidden" />
             </div>
             <button type="submit">Save</button>
         </form>

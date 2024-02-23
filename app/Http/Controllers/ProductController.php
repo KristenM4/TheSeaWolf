@@ -85,6 +85,16 @@ class ProductController extends Controller
         Storage::put('public/product-images/' . $imageName, $productImg);
         $createProductFormData['image'] = $imageName;
 
+        $productThmb = Image::make($request->file('image'))
+            ->resize(80, 120, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+            })
+            ->encode('jpg');
+        $thumbnailName = $slugName . '-thumbnail.jpg';
+        Storage::put('public/product-images/' . $thumbnailName, $productThmb);
+        $createProductFormData['thumbnail'] = $thumbnailName;
+
         $newProduct = Product::create($createProductFormData);
 
         return redirect("/product/{$newProduct->slug}")->with('success', 'New product successfully created.');
@@ -101,12 +111,7 @@ class ProductController extends Controller
         return view('products/change-product-image', ['product' => $product]);
     }
 
-    function saveNewProductImage(Request $request) {
-        $changeImageFormData = $request->validate([
-            'id' => [],
-        ]);
-
-        $product = Product::find($changeImageFormData['id']);
+    function saveNewProductImage(Product $product, Request $request) {
 
         $productImg = Image::make($request->file('image'))
             ->resize(500, 800, function ($constraint) {
@@ -116,13 +121,27 @@ class ProductController extends Controller
             ->encode('jpg');
         $newImageName = $product['slug'] . '-image.jpg';
 
+        $productThmb = Image::make($request->file('image'))
+            ->resize(80, 120, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+            })
+            ->encode('jpg');
+        $newThumbnailName = $product['slug'] . '-thumbnail.jpg';
+
         $oldImage = $product->image;
+        $oldThumbnail = $product->thumbnail;
         if (!empty($oldImage) && $oldImage != 'no-image.jpg') {
             Storage::delete('public/product-images/' . $oldImage);
         }
+        if (!empty($oldThumbnail) && $oldThumbnail != 'no-image.jpg') {
+            Storage::delete('public/product-images/' . $oldThumbnail);
+        }
 
         Storage::put('public/product-images/' . $newImageName, $productImg);
+        Storage::put('public/product-images/' . $newThumbnailName, $productThmb);
         $product->image = $newImageName;
+        $product->thumbnail = $newThumbnailName;
         $product->save();
 
         return back()->with('success', 'Product image successfully changed.');
@@ -153,9 +172,12 @@ class ProductController extends Controller
             $newSlug = Str::slug($editProductFormData['name']) . '-' . substr(bin2hex(random_bytes(4)), 0, 8);
             $newImageName = $newSlug . '-image.jpg';
             Storage::move('public/product-images/' . $product->image, 'public/product-images/' . $newImageName);
+            $newThumbnailName = $newSlug . '-thumbnail.jpg';
+            Storage::move('public/product-images/' . $product->thumbnail, 'public/product-images/' . $newThumbnailName);
 
             $editProductFormData['slug'] = $newSlug;
             $editProductFormData['image'] = $newImageName;
+            $editProductFormData['thumbnail'] = $newThumbnailName;
         }
 
         $product->update($editProductFormData);
@@ -167,6 +189,9 @@ class ProductController extends Controller
     function deleteProduct(Product $product) {
         if (!empty($product->image) && $product->image != 'no-image.jpg') {
             Storage::delete('public/product-images/' . $product->image);
+        }
+        if (!empty($product->thumbnail) && $product->thumbnail != 'no-image.jpg') {
+            Storage::delete('public/product-images/' . $product->thumbnail);
         }
         $product->delete();
         return redirect("/manage-products/")->with('success', 'Product successfully deleted.');
