@@ -42,4 +42,18 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected function calculateTotal(): Attribute {
+        return Attribute::make(get: function() {
+            $total = 0;
+            $userCart = Cart::all()->where('user_id', $this->user_id);
+            if($userCart->count() > 0) {
+                foreach($userCart as $item) {
+                    $product = Product::find($item->product_id);
+                    $price = number_format($product->totalPrice * $item->quantity, 2);
+                    $total = $total + $price;
+                }
+                return $total;
+            }
+        });
+    }
 }

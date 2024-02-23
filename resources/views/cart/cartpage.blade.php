@@ -26,6 +26,7 @@
                 </div>
             </div>
             @endforeach
+            <p>TOTAL &#163;{{$total}}</p>
         @endif
     </div>
 </x-layout>

@@ -12,11 +12,16 @@ class CartController extends Controller
         if(auth()->check()) {
             $cart = Cart::find(auth()->user()->id);
             $cartItems = $cart ? $cart->getProducts : null;
+            $total = $cart->calculateTotal;
         }
         else{
             $cartItems = session('cartItems');
+            $total = 0;
+            foreach ($cartItems as $item) {
+                $total = $total + number_format($item['product']->totalPrice * $item['quantity'], 2);
+            }
         }
-        return view('cart/cartpage', ['cartitems' => $cartItems]);
+        return view('cart/cartpage', ['cartitems' => $cartItems, 'total' => $total]);
     }
 
     function cartIncrement(Product $product, Request $request) {
