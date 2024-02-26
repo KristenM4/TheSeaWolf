@@ -17,8 +17,10 @@ class CartController extends Controller
         else{
             $cartItems = session('cartItems');
             $total = 0;
-            foreach ($cartItems as $item) {
-                $total = $total + number_format($item['product']->totalPrice * $item['quantity'], 2);
+            if($cartItems != null) {
+                foreach ($cartItems as $item) {
+                    $total = $total + number_format($item['product']->totalPrice * $item['quantity'], 2);
+                }
             }
         }
         return view('cart/cartpage', ['cartitems' => $cartItems, 'total' => $total]);
