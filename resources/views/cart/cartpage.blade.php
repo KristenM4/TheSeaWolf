@@ -26,7 +26,10 @@
                 </div>
             </div>
             @endforeach
-            <p>TOTAL &#163;{{$total}}</p>
+            <div class="cart-total">
+                <p>TOTAL &#163;{{$total}}</p>
+                <a class="cart-btn" href="/cart/checkout/">Check Out</a>
+            </div>
         @endif
     </div>
 </x-layout>
